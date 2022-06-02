@@ -1,3 +1,5 @@
+import styles from "../styles/Home.module.css";
+
 type Post = {
   id: string;
   title: string;
@@ -9,11 +11,15 @@ type Props = {
 
 function Blog({ posts }: Props) {
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
+    <div className={styles.container}>
+      <main>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      </main>
+    </div>
   );
 }
 

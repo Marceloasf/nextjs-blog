@@ -1,3 +1,5 @@
+import styles from "../../styles/Home.module.css";
+
 type Post = {
   id: string;
   title: string;
@@ -8,7 +10,11 @@ type Props = {
 };
 
 const Posts = ({ post }: Props) => {
-  return <div>{`${post.id} - ${post.title}`}</div>;
+  return (
+    <div className={styles.container}>
+      <h5>{`${post.id} - ${post.title}`}</h5>
+    </div>
+  );
 };
 
 // This function gets called at build time
