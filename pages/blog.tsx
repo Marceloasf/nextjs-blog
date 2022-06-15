@@ -1,4 +1,8 @@
-import styles from "../styles/Home.module.css";
+import { Typography } from '@mui/material';
+import styles from '../styles/Home.module.css';
+import Layout from './components/layout/layout';
+import Sidebar from './components/sidebar/sidebar';
+import { loremIpsum } from './mocks';
 
 type Post = {
   id: string;
@@ -15,7 +19,12 @@ function Blog({ posts }: Props) {
       <main>
         <ul>
           {posts.map((post) => (
-            <li key={post.id}>{post.title}</li>
+            <>
+              <li key={post.id}>
+                <Typography>{post.title}</Typography>
+                <Typography>{loremIpsum}</Typography>
+              </li>
+            </>
           ))}
         </ul>
       </main>
@@ -30,8 +39,8 @@ export async function getStaticProps() {
 
   const posts = await [
     {
-      id: "1",
-      title: "Test",
+      id: '1',
+      title: 'Test',
     },
   ];
 
@@ -43,5 +52,14 @@ export async function getStaticProps() {
     },
   };
 }
+
+Blog.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};
 
 export default Blog;

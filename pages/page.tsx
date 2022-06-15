@@ -1,3 +1,6 @@
+import Layout from './components/layout/layout';
+import Sidebar from './components/sidebar/sidebar';
+
 type Page = {
   id: string;
   title: string;
@@ -16,12 +19,21 @@ export async function getServerSideProps() {
   // Fetch data from external API
   // const res = await fetch(`https://.../data`)
   const data = await {
-    id: "1",
-    title: "Page Test",
+    id: '1',
+    title: 'Page Test',
   };
 
   // Pass data to the page via props
   return { props: { data } };
 }
+
+Page.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};
 
 export default Page;

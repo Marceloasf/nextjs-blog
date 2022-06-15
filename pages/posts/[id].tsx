@@ -1,4 +1,6 @@
-import styles from "../../styles/Home.module.css";
+import styles from '../../styles/Home.module.css';
+import Layout from '../components/layout/layout';
+import Sidebar from '../components/sidebar/sidebar';
 
 type Post = {
   id: string;
@@ -22,11 +24,11 @@ export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   // const res = await fetch("https://.../posts");
   const posts = await [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-    { id: "4" },
-    { id: "5" },
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' },
+    { id: '5' },
   ];
 
   // Get the paths we want to pre-render based on posts
@@ -58,5 +60,14 @@ export async function getStaticProps({ params }: Params) {
   // Pass post data to the page via props
   return { props: { post } };
 }
+
+Posts.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  );
+};
 
 export default Posts;

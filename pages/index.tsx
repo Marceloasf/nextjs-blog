@@ -1,8 +1,9 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import styles from "../styles/Home.module.css";
+import { useRouter } from 'next/router';
+import styles from '../styles/Home.module.css';
+import Layout from './components/layout/layout';
+import Sidebar from './components/sidebar/sidebar';
 
-const Home: NextPage = () => {
+const Home = () => {
   const router = useRouter();
 
   return (
@@ -10,21 +11,8 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>{`Welcome to Marcelo's Page!`}</h1>
 
-        <p className={styles.description}>
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <p className={styles.description}></p>
 
-        <div className={styles.grid}>
-          <a href={`${router.basePath}/blog`} className={styles.card}>
-            <h2>Blog &rarr;</h2>
-            <p>My blog</p>
-          </a>
-
-          <a href={`${router.basePath}/about`} className={styles.card}>
-            <h2>About &rarr;</h2>
-            <p>About me</p>
-          </a>
-        </div>
         <div className={styles.card}>
           <h2>Posts &rarr;</h2>
           <p>Some posts</p>
@@ -52,6 +40,15 @@ const Home: NextPage = () => {
         <h2>Footer</h2>
       </footer>
     </div>
+  );
+};
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
   );
 };
 
