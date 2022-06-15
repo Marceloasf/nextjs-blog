@@ -11,8 +11,6 @@ const Home = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>{`Welcome to Marcelo's Page!`}</h1>
 
-        <p className={styles.description}></p>
-
         <div className={styles.card}>
           <h2>Posts &rarr;</h2>
           <p>Some posts</p>
