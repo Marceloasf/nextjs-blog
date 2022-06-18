@@ -6,7 +6,6 @@ import { loremIpsum } from './mocks';
 
 const Home = () => {
   const router = useRouter();
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Box mt="2%">
@@ -25,7 +24,7 @@ const Home = () => {
           {loremIpsum}
         </Typography>
       </Box>
-      
+
       <Box ml="1%" mt="2%">
         <Typography variant="h4" gutterBottom component="div">
           Posts &rarr;
