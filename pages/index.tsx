@@ -25,7 +25,6 @@ const Home = () => {
           {loremIpsum}
         </Typography>
       </Box>
-
       <Box ml="1%" mt="2%">
         <Typography variant="h4" gutterBottom component="div">
           Posts &rarr;
