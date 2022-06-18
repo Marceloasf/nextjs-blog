@@ -1,50 +1,71 @@
+import { Box, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import styles from '../styles/Home.module.css';
 import Layout from './components/layout/layout';
-import Sidebar from './components/sidebar/sidebar';
+import CustomHeader from './components/header/header';
+import { loremIpsum } from './mocks';
 
 const Home = () => {
   const router = useRouter();
 
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{`Welcome to Marcelo's Page!`}</h1>
+    <Box sx={{ flexGrow: 1 }}>
+      <Box mt="2%">
+        <Typography
+          variant="h2"
+          gutterBottom
+          component="div"
+        >{`Welcome to Marcelo's Page!`}</Typography>
+      </Box>
 
-        <div className={styles.card}>
-          <h2>Posts &rarr;</h2>
-          <p>Some posts</p>
-          <div className={styles.grid}>
-            <a href={`${router.basePath}/posts/1`} className={styles.card}>
-              <h5>Post 1</h5>
-            </a>
-            <a href={`${router.basePath}/posts/2`} className={styles.card}>
-              <h5>Post 2</h5>
-            </a>
-            <a href={`${router.basePath}/posts/3`} className={styles.card}>
-              <h5>Post 3</h5>
-            </a>
-            <a href={`${router.basePath}/posts/4`} className={styles.card}>
-              <h5>Post 4</h5>
-            </a>
-            <a href={`${router.basePath}/posts/5`} className={styles.card}>
-              <h5>Post 5</h5>
-            </a>
-          </div>
-        </div>
-      </main>
+      <Box ml="1%" mt="2%">
+        <Typography variant="h4" gutterBottom component="div">
+          About &rarr;
+        </Typography>
+        <Typography gutterBottom component="div">
+          {loremIpsum}
+        </Typography>
+      </Box>
 
-      <footer className={styles.footer}>
-        <h2>Footer</h2>
-      </footer>
-    </div>
+      <Box ml="1%" mt="2%">
+        <Typography variant="h4" gutterBottom component="div">
+          Posts &rarr;
+        </Typography>
+        <Box>
+          <Box>
+            <Button onClick={() => router.push('/posts/1')} variant="text">
+              Post 1
+            </Button>
+          </Box>
+          <Box>
+            <Button onClick={() => router.push('/posts/2')} variant="text">
+              Post 2
+            </Button>
+          </Box>
+          <Box>
+            <Button onClick={() => router.push('/posts/3')} variant="text">
+              Post 3
+            </Button>
+          </Box>
+          <Box>
+            <Button onClick={() => router.push('/posts/4')} variant="text">
+              Post 4
+            </Button>
+          </Box>
+          <Box>
+            <Button onClick={() => router.push('/posts/5')} variant="text">
+              Post 5
+            </Button>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 Home.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <Sidebar />
+      <CustomHeader />
       {page}
     </Layout>
   );

@@ -1,6 +1,6 @@
-import styles from '../../styles/Home.module.css';
+import { Typography } from '@mui/material';
 import Layout from '../components/layout/layout';
-import Sidebar from '../components/sidebar/sidebar';
+import CustomHeader from '../components/header/header';
 
 type Post = {
   id: string;
@@ -13,8 +13,8 @@ type Props = {
 
 const Posts = ({ post }: Props) => {
   return (
-    <div className={styles.container}>
-      <h5>{`${post.id} - ${post.title}`}</h5>
+    <div>
+      <Typography variant="h5">{`${post.id} - ${post.title}`}</Typography>
     </div>
   );
 };
@@ -28,12 +28,12 @@ export async function getStaticPaths() {
     { id: '2' },
     { id: '3' },
     { id: '4' },
-    { id: '5' },
+    { id: '5' }
   ];
 
   // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: post.id },
+  const paths = posts.map(post => ({
+    params: { id: post.id }
   }));
 
   // We'll pre-render only these paths at build time.
@@ -54,7 +54,7 @@ export async function getStaticProps({ params }: Params) {
   // const res = await fetch(`https://.../posts/${params.id}`)
   const post = await {
     id: params.id,
-    title: `Post ${params.id}`,
+    title: `Post ${params.id}`
   };
 
   // Pass post data to the page via props
@@ -64,7 +64,7 @@ export async function getStaticProps({ params }: Params) {
 Posts.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <Sidebar />
+      <CustomHeader />
       {page}
     </Layout>
   );

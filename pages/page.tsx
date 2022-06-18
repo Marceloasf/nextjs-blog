@@ -1,5 +1,5 @@
 import Layout from './components/layout/layout';
-import Sidebar from './components/sidebar/sidebar';
+import CustomHeader from './components/header/header';
 
 type Page = {
   id: string;
@@ -20,7 +20,7 @@ export async function getServerSideProps() {
   // const res = await fetch(`https://.../data`)
   const data = await {
     id: '1',
-    title: 'Page Test',
+    title: 'Page Test'
   };
 
   // Pass data to the page via props
@@ -30,7 +30,7 @@ export async function getServerSideProps() {
 Page.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <Sidebar />
+      <CustomHeader />
       {page}
     </Layout>
   );

@@ -1,7 +1,6 @@
 import { Typography } from '@mui/material';
-import styles from '../styles/Home.module.css';
 import Layout from './components/layout/layout';
-import Sidebar from './components/sidebar/sidebar';
+import CustomHeader from './components/header/header';
 import { loremIpsum } from './mocks';
 
 type Post = {
@@ -15,10 +14,10 @@ type Props = {
 
 function Blog({ posts }: Props) {
   return (
-    <div className={styles.container}>
+    <div>
       <main>
         <ul>
-          {posts.map((post) => (
+          {posts.map(post => (
             <>
               <li key={post.id}>
                 <Typography>{post.title}</Typography>
@@ -40,23 +39,23 @@ export async function getStaticProps() {
   const posts = await [
     {
       id: '1',
-      title: 'Test',
-    },
+      title: 'Test'
+    }
   ];
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      posts,
-    },
+      posts
+    }
   };
 }
 
 Blog.getLayout = function getLayout(page) {
   return (
     <Layout>
-      <Sidebar />
+      <CustomHeader />
       {page}
     </Layout>
   );
